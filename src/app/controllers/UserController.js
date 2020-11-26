@@ -1,4 +1,4 @@
-import * as Yup from "up";
+import * as Yup from "yup";
 import { password } from "../../config/database";
 
 import User from "../models/User";
@@ -40,7 +40,7 @@ class UserController {
       password: Yup.string()
         .min(6)
         .when("oldPassword", (oldPassword, field) =>
-          oldPassword ? field.required() : field0
+          oldPassword ? field.required() : field
         ),
       confirmPassword: Yup.string().when("password", (password, field) =>
         password ? field.required().oneOf([Yup.ref("password")]) : field
